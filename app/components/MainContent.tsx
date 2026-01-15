@@ -1,5 +1,7 @@
 import Image from "next/image";
 import StatusBadge from "./StatusBadge";
+import { Contact } from "./Contact";
+import { SkillsList } from "./SkillsList";
 
 export const MainContent = () => {
     return (
@@ -16,8 +18,10 @@ export const MainContent = () => {
                     <StatusBadge variant="green" />
                 </div>
             </div>
-            <h1 className="text-xl font-heading text-cyan-400">~ Purv Joshi</h1>
-            <p className="text-xl text-neutral-500 font-medium">Full-stack engineer | DevOps & Security | Learning the internet from the ground up.</p>
+            <h1 className="text-3xl font-heading text-cyan-400">~ Purv Joshi</h1>
+            <p className="text-lg text-neutral-500 font-medium">Full-stack engineer | DevOps & Security | Learning the internet from the ground up.</p>
+            <Contact />
+            <SkillsList/>
         </div>
     )
 }
