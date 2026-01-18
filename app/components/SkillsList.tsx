@@ -1,4 +1,4 @@
-import { AwsIcon, CloudflareIcon, DigitaloceanIcon, DockerIcon, ExpressIcon, GithubIcon, GitIcon, JavascriptIcon, MongodbIcon, NextIcon, NginxIcon, NodeIcon, PostgresIcon, PostmanIcon, PrismaIcon, ReactIcon, SqlIcon, TailwindIcon, TypescriptIcon, VercelIcon } from "../lib/icons"
+import { AwsIcon, CloudflareIcon, DigitaloceanIcon, DockerIcon, ExpressIcon, GithubIcon, GitIcon, JavascriptIcon, LinuxIcon, MongodbIcon, NextIcon, NginxIcon, NodeIcon, PostgresIcon, PostmanIcon, PrismaIcon, ReactIcon, SqlIcon, TailwindIcon, TypescriptIcon, VercelIcon } from "../lib/icons"
 import { SkillsCard } from "./SkillsCard"
 
 export const SkillsList = () => {
@@ -15,6 +15,7 @@ export const SkillsList = () => {
                 <SkillsCard icon={<DockerIcon height={4} width={4} />} label="Docker" />
                 <SkillsCard icon={<GitIcon height={4} width={4} />} label="Git" />
                 <SkillsCard icon={<GithubIcon height={4} width={4} />} label="Github" />
+                <SkillsCard icon={<LinuxIcon height={4} width={4} />} label="Linux" />
                 <SkillsCard icon={<SqlIcon height={4} width={4} />} label="SQL" />
                 <SkillsCard icon={<MongodbIcon height={4} width={4} />} label="MongoDb" />
                 <SkillsCard icon={<PostgresIcon height={4} width={4} />} label="PostgreSQL" />

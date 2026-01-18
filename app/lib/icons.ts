@@ -22,3 +22,5 @@ export { FaAws as AwsIcon } from "react-icons/fa";
 export { FaDigitalOcean as DigitaloceanIcon } from "react-icons/fa";
 export { FaCloudflare as CloudflareIcon } from "react-icons/fa";
 export { SiNginx as NginxIcon } from "react-icons/si";
+export { FaLinux as LinuxIcon } from "react-icons/fa";
+export { FiExternalLink as ExternallinkIcon } from "react-icons/fi";

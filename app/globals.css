@@ -1,16 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-main: #0b0b0b;
+  --bg-surface: #141414;
+  --bg-muted: #1f1f1f;
+  --text-main: #eaeaea;
+  --text-muted: #b3b3b3;
+  --border-main: #262626;
+  --accent: #3b82f6;
+  --cyan-400: #22d3ee;
+}
+
+html {
+  color-scheme: dark;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-heading: var(--font-heading);
-  --font-body: var(--font-body);
-  --font-sans: var(--font-body);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,7 +30,39 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.5s ease;
+  border-radius: 0.5rem;
+}
+
+a::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(0deg, transparent, transparent 30%, var(--cyan-400));
+  transform: rotate(-45deg);
+  opacity: 0;
+  transition: all 0.5s ease;
+  border-radius: 0.9rem;
+}
+
+a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--cyan-400);
+}
+
+a:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
 }

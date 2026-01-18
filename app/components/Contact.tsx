@@ -13,7 +13,7 @@ export const Contact = () => {
                         href="https://www.linkedin.com/in/purvjoshi"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-gray-300 hover:text-cyan-400 transition-colors border border-neutral-700 bg-neutral-900 rounded-lg px-2"
+                        className="inline-flex items-center gap-2 text-gray-300 transition-colors border border-neutral-700 bg-neutral-900 rounded-lg px-2"
                     >
                         <LinkedinIcon height={3} width={3} />
                         <span>LinkedIn</span>
@@ -22,16 +22,16 @@ export const Contact = () => {
                         href="https://x.com/purv04"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-gray-300 hover:text-cyan-400 transition-colors border border-neutral-700 bg-neutral-900 rounded-lg px-2 py-1.5"
+                        className="inline-flex items-center gap-2 text-gray-300 transition-colors border border-neutral-700 bg-neutral-900 rounded-lg px-2 py-1.5"
                     >
                         <XIcon height={3} width={3} />
-                        <span>LinkedIn</span>
+                        <span>X (Twitter)</span>
                     </Link>
                     <Link
                         href="mailto:purvjoshi.dev@gmail.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-gray-300 hover:text-cyan-400 transition-colors border border-neutral-700 bg-neutral-900 rounded-lg px-2 py-1.5"
+                        className="inline-flex items-center gap-2 text-gray-300 transition-colors border border-neutral-700 bg-neutral-900 rounded-lg px-2 py-1.5"
                     >
                         <MailIcon height={7} width={7} />
                         <span>Gmail</span>
@@ -45,7 +45,7 @@ export const Contact = () => {
                     href="mailto:purvjoshi.dev@gmail.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-gray-300 hover:text-cyan-400 transition-colors border border-neutral-700 bg-neutral-900 rounded-lg px-2 py-1.5 mt-2"
+                    className="inline-flex items-center gap-2 text-gray-300 transition-colors border border-neutral-700 bg-neutral-900 rounded-lg px-2 py-1.5 mt-2"
                 >
                     <MailboxIcon height={3} width={3} />
                     <span>Hire Me</span>
