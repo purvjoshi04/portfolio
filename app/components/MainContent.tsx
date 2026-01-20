@@ -11,7 +11,7 @@ export const MainContent = () => {
                 <Image
                     src="profile.svg"
                     alt="Profile"
-                    width={100}
+                    width={150}
                     height={100}
                     className="rounded-xl"
                 />
