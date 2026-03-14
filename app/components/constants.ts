@@ -35,7 +35,7 @@ export const projects: Project[] = [
             type: "monorepo",
             url: "https://github.com/purvjoshi04/SharedInk.git"
         },
-        demoUrl: "https://resplendent-sprite-029831.netlify.app/",
+        demoUrl: "https://smartsage.purvjoshi.space/",
         tags: [
             "NextJS",
             "TypeScript",
