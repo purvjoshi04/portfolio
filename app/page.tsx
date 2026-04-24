@@ -1,15 +1,23 @@
-import FooterBar from "./components/FooterBar";
-import { MainContent } from "./components/MainContent";
+import HeroSection from "@/components/HeroSection";
+import SkillsSection from "@/components/SkillsSection";
+import ProjectsSection from "@/components/ProjectsSection";
+import GithubSection from "@/components/GithubSection";
+import ContactSection from "@/components/ContactSection";
+import SideNav from "@/components/SideNav";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className="w-ful">
-      <section className="min-h-screen bg-linear-to-t from-neutral-900 to-transparent">
-        <div className="flex items-center justify-center px-5 gap2 pt-15 pb-30">
-          <MainContent />
-        </div>
-        <FooterBar />
-      </section>
+    <main className="relative bg-black min-h-screen">
+      <SideNav />
+      <HeroSection />
+      <div className="section-divider" />
+      <SkillsSection />
+      <div className="section-divider" />
+      <ProjectsSection />
+      <div className="section-divider" />
+      <GithubSection />
+      <div className="section-divider" />
+      <ContactSection />
     </main>
   );
 }

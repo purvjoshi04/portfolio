@@ -1,68 +1,78 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=Syne:wght@500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --bg-main: #0b0b0b;
-  --bg-surface: #141414;
-  --bg-muted: #1f1f1f;
-  --text-main: #eaeaea;
-  --text-muted: #b3b3b3;
-  --border-main: #262626;
-  --accent: #3b82f6;
-  --cyan-400: #22d3ee;
+  --max-w: 900px;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-display: "Syne", sans-serif;
+  --font-body: "DM Sans", sans-serif;
 }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
-  color-scheme: dark;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #222 #000;
+  -webkit-font-smoothing: antialiased;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: #222; }
 
 body {
-  background-color: var(--bg-main);
-  color: var(--text-main);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #000;
+  color: #fff;
+  font-family: var(--font-body);
+  overflow-x: hidden;
 }
 
-a {
-  position: relative;
-  overflow: hidden;
-  text-decoration: none;
-  transition: all 0.5s ease;
-  border-radius: 0.5rem;
+::selection { background: #fff; color: #000; }
+:focus-visible { outline: 1px solid rgba(255,255,255,0.4); outline-offset: 3px; }
+
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
-a::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(0deg, transparent, transparent 30%, var(--cyan-400));
-  transform: rotate(-45deg);
-  opacity: 0;
-  transition: all 0.5s ease;
-  border-radius: 0.9rem;
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-a:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px var(--cyan-400);
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+@keyframes scrollLine {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  51%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
-a:hover::before {
-  opacity: 1;
-  transform: rotate(-45deg) translateY(100%);
+.animate-fade-up  { animation: fadeUp 0.65s ease forwards; }
+.animate-blink    { animation: blink 1s step-end infinite; }
+.scroll-line      { animation: scrollLine 2s ease infinite; }
+
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.07);
 }

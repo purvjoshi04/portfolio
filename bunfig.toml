@@ -1,0 +1,14 @@
+# Bun configuration
+[install]
+# Use exact versions for reproducible installs
+exact = false
+
+[install.cache]
+# Cache directory
+dir = "~/.bun/install/cache"
+disable = false
+disableManifest = false
+
+[run]
+# Shell to use for bun run scripts
+shell = "bun"

@@ -1,11 +1,23 @@
-import { spaceGrotesk, inter } from "@/app/lib/fonts";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import type { Metadata } from "next";
+import { personalInfo } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Purv Joshi",
-  description: "Purv joshi portfolio"
-}
+  title: `${personalInfo.name}`,
+  description: personalInfo.bio,
+  authors: [{ name: personalInfo.name }],
+  keywords: ["portfolio", "developer", "full-stack", "TypeScript", "Next.js"],
+  openGraph: {
+    title: `${personalInfo.name}`,
+    description: personalInfo.bio,
+    type: "website",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  colorScheme: "dark",
+};
 
 export default function RootLayout({
   children,
@@ -13,10 +25,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} antialiased`}>
-      <body
-        className="font-body"
-      >
+    <html lang="en" className="dark">
+      <body>
+        <div className="grain" aria-hidden="true" />
         {children}
       </body>
     </html>
