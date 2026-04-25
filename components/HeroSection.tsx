@@ -40,8 +40,6 @@ export default function HeroSection() {
       />
 
       <div className="container relative z-10 flex flex-col-reverse md:grid md:grid-cols-2 gap-10 md:gap-20 items-center pt-24 md:pt-0">
-
-        {/* Image */}
         <div className="flex justify-center items-center animate-fade-up" style={{ animationDelay: "0.05s", opacity: 0 }}>
           <div className="relative w-[240px] h-[300px] md:w-[340px] md:h-[420px]">
             <div className="absolute top-4 left-4 right-[-16px] bottom-[-16px] border border-white/[0.07]" />
