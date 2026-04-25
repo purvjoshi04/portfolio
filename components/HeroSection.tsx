@@ -57,8 +57,6 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
-
-        {/* Text */}
         <div className="flex flex-col items-center text-center md:items-start md:text-left">
           {available && (
             <div className="inline-flex items-center gap-2 mb-8 animate-fade-up" style={{ animationDelay: "0.1s", opacity: 0 }}>
