@@ -39,9 +39,11 @@ export default function HeroSection() {
         aria-hidden="true"
       />
 
-      <div className="container relative z-10 grid grid-cols-2 gap-20 items-center">
+      <div className="container relative z-10 flex flex-col-reverse md:grid md:grid-cols-2 gap-10 md:gap-20 items-center pt-24 md:pt-0">
+
+        {/* Image */}
         <div className="flex justify-center items-center animate-fade-up" style={{ animationDelay: "0.05s", opacity: 0 }}>
-          <div className="relative w-[340px] h-[420px]">
+          <div className="relative w-[240px] h-[300px] md:w-[340px] md:h-[420px]">
             <div className="absolute top-4 left-4 right-[-16px] bottom-[-16px] border border-white/[0.07]" />
             {["top-0 left-0", "top-0 right-0 -scale-x-100", "bottom-0 left-0 -scale-y-100", "bottom-0 right-0 scale-[-1]"].map((pos, i) => (
               <span key={i} className={`absolute ${pos} w-[18px] h-[18px] z-10 before:absolute before:inset-0 before:border-t before:border-l before:border-white/50`} />
@@ -58,7 +60,8 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="flex flex-col">
+        {/* Text */}
+        <div className="flex flex-col items-center text-center md:items-start md:text-left">
           {available && (
             <div className="inline-flex items-center gap-2 mb-8 animate-fade-up" style={{ animationDelay: "0.1s", opacity: 0 }}>
               <span className="relative flex h-2 w-2">
@@ -70,26 +73,27 @@ export default function HeroSection() {
               </span>
             </div>
           )}
+
           <h1
             className="font-display font-extrabold leading-[0.95] tracking-tight mb-6 animate-fade-up"
-            style={{ fontSize: "clamp(52px, 7vw, 88px)", animationDelay: "0.2s", opacity: 0 }}
+            style={{ fontSize: "clamp(38px, 7vw, 88px)", animationDelay: "0.2s", opacity: 0 }}
           >
             <span className="block">{firstName}</span>
-            <span className="block pl-[0.35em]">{lastName}</span>
+            <span className="block md:pl-[0.35em]">{lastName}</span>
           </h1>
 
-          <div className="flex items-center gap-1 mb-6 animate-fade-up" style={{ animationDelay: "0.3s", opacity: 0 }}>
+          <div className="flex items-center justify-center md:justify-start gap-1 mb-6 animate-fade-up" style={{ animationDelay: "0.3s", opacity: 0 }}>
             <span className="font-mono text-sm text-white/50">{displayed}</span>
             <span className="inline-block w-[2px] h-4 bg-white/50 animate-blink" aria-hidden="true" />
           </div>
 
-          <div className="w-12 h-px bg-white/20 mb-6 animate-fade-up" style={{ animationDelay: "0.4s", opacity: 0 }} />
+          <div className="w-12 h-px bg-white/20 mb-6 animate-fade-up mx-auto md:mx-0" style={{ animationDelay: "0.4s", opacity: 0 }} />
 
-          <p className="font-body text-sm text-white/40 max-w-lg leading-relaxed mb-10 animate-fade-up" style={{ animationDelay: "0.5s", opacity: 0 }}>
+          <p className="font-body text-sm text-white/40 max-w-lg leading-relaxed mb-10 animate-fade-up mx-auto md:mx-0" style={{ animationDelay: "0.5s", opacity: 0 }}>
             {bio}
           </p>
 
-          <div className="flex flex-wrap gap-3 animate-fade-up" style={{ animationDelay: "0.6s", opacity: 0 }}>
+          <div className="flex flex-wrap gap-3 justify-center md:justify-start animate-fade-up" style={{ animationDelay: "0.6s", opacity: 0 }}>
             <a href="#projects" className="group relative overflow-hidden inline-flex items-center gap-2 px-7 py-3 bg-white text-black font-mono text-xs tracking-[0.15em] uppercase transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98]">
               <span className="relative z-10 group-hover:text-white transition-colors duration-300">View Projects</span>
               <span className="absolute inset-0 bg-black -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
