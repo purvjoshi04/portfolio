@@ -61,11 +61,20 @@ function ContributionGraph({ weeks, animated }: { weeks: ContributionWeek[]; ani
     if (!graphRef.current) return;
     const c = e.currentTarget.getBoundingClientRect();
     const p = graphRef.current.getBoundingClientRect();
-    setTooltip({ date, count, x: c.left - p.left + CELL / 2, y: c.top - p.top - 40 });
+    const x = c.left - p.left + CELL / 2;
+    const y = c.top - p.top - 40;
+    const tooltipWidth = 160;
+    const clampedX = Math.min(Math.max(x, tooltipWidth / 2), p.width - tooltipWidth / 2);
+    const clampedY = y < 0 ? c.top - p.top + CELL + 6 : y;
+    setTooltip({ date, count, x: clampedX, y: clampedY });
   }
 
   return (
-    <div ref={graphRef} className="relative overflow-x-auto pb-2">
+    <div
+      ref={graphRef}
+      className="relative w-full pb-2"
+      style={{ overflowX: "auto", overflowY: "visible" }}
+    >
       <div className="inline-block min-w-max">
         <div className="flex mb-1.5" style={{ paddingLeft: 28, gap: GAP }}>
           {weeks.map((_, wi) => {
@@ -111,6 +120,7 @@ function ContributionGraph({ weeks, animated }: { weeks: ContributionWeek[]; ani
             ))}
           </div>
         </div>
+
         <div className="flex items-center gap-1.5 mt-3 pl-[28px]">
           <span className="font-mono text-[8px] text-white/18 mr-0.5">Less</span>
           {LEVEL_OPACITIES.map((op, i) => (
@@ -160,11 +170,11 @@ export default function GithubSection() {
 
   const stats = state.data
     ? [
-        { label: "Repositories", value: state.data.repositories.toLocaleString() },
-        { label: "Pull Requests", value: state.data.pullRequests.toLocaleString() },
-        { label: "Issues Closed", value: state.data.issuesClosed.toLocaleString() },
-        { label: "Contributions", value: state.data.totalContributions.toLocaleString() },
-      ]
+      { label: "Repositories", value: state.data.repositories.toLocaleString() },
+      { label: "Pull Requests", value: state.data.pullRequests.toLocaleString() },
+      { label: "Issues Closed", value: state.data.issuesClosed.toLocaleString() },
+      { label: "Contributions", value: state.data.totalContributions.toLocaleString() },
+    ]
     : [];
 
   return (
@@ -179,12 +189,14 @@ export default function GithubSection() {
           }}
         >
           <p className="font-mono text-[9px] tracking-[0.35em] text-white/25 uppercase mb-3">Activity</p>
-          <div className="flex items-end justify-between flex-wrap gap-4">
-            <h2 className="font-display font-bold text-4xl md:text-5xl text-white">
+
+          <div className="flex items-end justify-between gap-4">
+            <h2 className="font-display font-bold text-4xl md:text-5xl text-white min-w-0">
               GitHub Contributions
             </h2>
+
             {!state.loading && state.data && (
-              <div className="mb-1 text-right">
+              <div className="mb-1 text-right shrink-0">
                 <p className="font-display font-bold text-3xl text-white">
                   {state.data.totalContributions.toLocaleString()}
                 </p>
@@ -194,7 +206,6 @@ export default function GithubSection() {
               </div>
             )}
           </div>
-
           {state.isMock && (
             <div className="mt-5 inline-flex items-center gap-2 px-3 py-1.5 border border-white/10">
               <span className="w-1.5 h-1.5 rounded-full bg-white/30" />
@@ -208,16 +219,21 @@ export default function GithubSection() {
             <p className="mt-4 font-mono text-[10px] text-white/30">⚠ {state.error}</p>
           )}
         </div>
+
         <div
+          className="w-full"
           style={{
             opacity: visible ? 1 : 0,
             transition: "opacity 0.6s ease 0.2s",
+            overflowX: "auto",
+            overflowY: "visible",
           }}
         >
           {state.loading ? <GraphSkeleton /> : state.data ? (
             <ContributionGraph weeks={state.data.weeks} animated={animated} />
           ) : null}
         </div>
+
         <div
           className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-px bg-white/8"
           style={{
@@ -227,17 +243,17 @@ export default function GithubSection() {
         >
           {state.loading
             ? Array.from({ length: 4 }).map((_, i) => (
-                <div key={i} className="bg-black px-6 py-5">
-                  <div className="w-10 h-5 bg-white/5 rounded animate-pulse mb-2" />
-                  <div className="w-16 h-2 bg-white/5 rounded animate-pulse" />
-                </div>
-              ))
+              <div key={i} className="bg-black px-6 py-5">
+                <div className="w-10 h-5 bg-white/5 rounded animate-pulse mb-2" />
+                <div className="w-16 h-2 bg-white/5 rounded animate-pulse" />
+              </div>
+            ))
             : stats.map(({ label, value }) => (
-                <div key={label} className="bg-black px-6 py-5">
-                  <p className="font-display font-bold text-2xl text-white">{value}</p>
-                  <p className="font-mono text-[8px] tracking-[0.18em] text-white/25 uppercase mt-1.5">{label}</p>
-                </div>
-              ))}
+              <div key={label} className="bg-black px-6 py-5">
+                <p className="font-display font-bold text-2xl text-white">{value}</p>
+                <p className="font-mono text-[8px] tracking-[0.18em] text-white/25 uppercase mt-1.5">{label}</p>
+              </div>
+            ))}
         </div>
       </div>
     </section>
