@@ -8,7 +8,7 @@ import { personalInfo } from "@/lib/data";
 import type { GitHubUserStats } from "@/types";
 
 export const runtime = "nodejs";
-export const revalidate = 3600;
+export const revalidate = 1200;
 
 export async function GET() {
   const username = personalInfo.githubUsername;
@@ -25,7 +25,7 @@ export async function GET() {
       { ...mockStats, _mock: true },
       {
         status: 200,
-        headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" },
+        headers: { "Cache-Control": "public, s-maxage=1200, stale-while-revalidate=86400" },
       }
     );
   }
@@ -34,7 +34,7 @@ export async function GET() {
     const stats = await fetchGitHubContributions(username);
     return NextResponse.json(stats, {
       status: 200,
-      headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" },
+      headers: { "Cache-Control": "public, s-maxage=1200, stale-while-revalidate=86400" },
     });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unknown error";
